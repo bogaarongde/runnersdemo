@@ -8,12 +8,12 @@ import jakarta.persistence.*;
 public class LapTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "runner_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(nullable = false)
     private RunnerEntity runner;
 
     @Column(name = "lap_number", nullable = false)
