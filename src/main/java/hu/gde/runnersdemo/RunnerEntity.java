@@ -1,9 +1,9 @@
 package hu.gde.runnersdemo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class RunnerEntity {
@@ -13,11 +13,9 @@ public class RunnerEntity {
     private String runnerName;
     private long averagePace;
 
-    public RunnerEntity(Runner runner) {
-        this.runnerId = runner.runnerId();
-        this.runnerName = runner.runnerName();
-        this.averagePace = runner.averagePace();
-    }
+    @OneToMany(mappedBy = "runner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LapTimeEntity> laptimes = new ArrayList<>();
+
 
     public RunnerEntity() {
     }
@@ -44,5 +42,9 @@ public class RunnerEntity {
 
     public void setAveragePace(long averagePace) {
         this.averagePace = averagePace;
+    }
+
+    public List<LapTimeEntity> getLaptimes() {
+        return laptimes;
     }
 }
