@@ -23,7 +23,7 @@ D. A Kanban módszertan szerint minden csapatnak ugyanazokat a munkafolyamatokat
 Válasz:
 
 Kérdés 3:
-Mi a "Work In Progress" (WIP) limit a Kanban módszertanban?
+Mi a "Work In Progress" (WIP. limit a Kanban módszertanban?
 
 A. A csapat által párhizamosan elvégzendő feladatok maximális száma
 B. A csapat által egy időben végezhető feladatok minimális száma
@@ -39,5 +39,65 @@ A. Feladat kártyák
 B. Munkafázisok
 C. WIP limitek
 D. Ütemterv
+
+Válasz:
+
+Kérdés 5:
+Milyen szerepkör nem létezik a Scrum keretrendszerben?
+
+A. Scrum Master
+B. Product Owner
+C. Development Team
+D. Quality Analyst
+
+Válasz:
+
+Kérdés 6:
+Mire utal a "User Story" kifejezés az Agile keretrendszerekben?
+
+A. Egy részletes dokumentációra
+B. Egy személyre szabott felhasználói felületre
+C. Egy felhasználói igény leírására
+D. Egy hibajavításra
+
+Válasz:
+
+Kérdés 7:
+Melyik az alábbiak közül NEM az Agile Alapelvek között található?
+
+A. Az ügyfelek elégedettsége
+B. Az együttműködés a folyamatok felett
+C. A rugalmas válaszadás a változásokra
+D. A dokumentáció fontossága minden másnál
+
+Válasz:
+
+Kérdés 8:
+Mi az a Kanban módszer?
+
+A. Egy időközönkénti fejlesztési módszer
+B. Egy vizuális menedzsment rendszer
+C. Egy projektmenedzsment módszer
+D. Egy teljesítményértékelési módszer
+
+Válasz:
+
+Kérdés 9:
+Melyik az alábbiak közül nem számít Agile módszertannak?
+
+A. Scrum
+B. Extreme Programming (XP)
+C. Lean Software Development
+D. Vízesés modell
+
+Válasz:
+
+Kérdés 10:
+Mi a "Velocity" az Agile módszertanban?
+
+A. A fejlesztői csapat sebessége
+B. A fejlesztői csapat hatékonysága
+C. A fejlesztői csapat elvégzett munka mennyisége egy időperiódus alatt
+D. A fejlesztői csapat számbeli létszáma
 
 Válasz:
