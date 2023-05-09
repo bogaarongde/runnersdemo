@@ -1,0 +1,43 @@
+Név:
+Szak:
+Neptun azonosító:
+
+Kérdés 1:
+Mi a Kanban módszertan alapvető célja?
+
+A. A projektek tervezési fázisának kihagyása
+B. A munkafolyamatok átláthatóságának és hatékonyságának javítása
+C. A projektek erőforrásainak maximalizálása
+D. Csak a projektek kezdeti szakaszában való alkalmazás
+
+Válasz:
+
+Kérdés 2:
+Melyik állítás igaz a Kanban módszertannal kapcsolatban?
+
+A. A Kanban csapatoknak követniük kell egy előre meghatározott, állandó folyamatot
+B. A Kanban módszertan lehetővé teszi a csapatok számára, hogy folyamatosan és rugalmasan javítsák a munkafolyamatokat
+C. A Kanban módszertan csak IT projektekben alkalmazható
+D. A Kanban módszertan szerint minden csapatnak ugyanazokat a munkafolyamatokat kell használnia
+
+Válasz:
+
+Kérdés 3:
+Mi a "Work In Progress" (WIP) limit a Kanban módszertanban?
+
+A. A csapat által párhizamosan elvégzendő feladatok maximális száma
+B. A csapat által egy időben végezhető feladatok minimális száma
+C. Az egyes munkafázisokhoz rendelt időkorlát
+D. A projektenként elkülönített erőforrások maximális száma
+
+Válasz:
+
+Kérdés 4:
+Melyik elem NEM része a Kanban táblának?
+
+A. Feladat kártyák
+B. Munkafázisok
+C. WIP limitek
+D. Ütemterv
+
+Válasz:

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Runner</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1 th:text="${runner.runnerName}"></h1>
+  <hr>
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>Runner ID:</th>
+      <td th:text="${runner.runnerId}"></td>
+    </tr>
+    <tr>
+      <th>Average Pace:</th>
+      <td th:text="${runner.averagePace}"></td>
+    </tr>
+    <tr>
+      <th>Average Lap Time:</th>
+      <td th:text="${averageLaptime}"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Lap Number</th>
+            <th>Lap Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="laptime : ${runner.laptimes}">
+            <td align="right" th:text="${laptime.lapNumber}"></td>
+            <td align="right" th:text="${laptime.timeSeconds} + ' seconds'"></td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <a th:href="@{/runner/{id}/addlaptime(id=${runner.runnerId})}" class="btn btn-secondary">Add Laptime</a>
+  <a href="/runners" class="btn btn-primary">Back to Home</a>
+</div>
+</body>
+</html>

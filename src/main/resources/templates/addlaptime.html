@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Laptime</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Add Laptime for lap <span th:text="${laptime.lapNumber}">3</span> for <span th:text="${runner.runnerName}">Tomi</span></h1>
+  <form th:action="@{/runner/{id}/addlaptime(id=${runner.runnerId})}" th:object="${laptime}" method="post">
+    <input type="hidden" th:field="*{runner.runnerId}"/>
+    <input type="hidden" th:field="*{lapNumber}" th:value="${laptime.lapNumber}"/>
+    <div class="form-group">
+      <label for="timeSeconds">Time (seconds):</label>
+      <input type="number" id="timeSeconds" th:field="*{timeSeconds}" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Laptime</button>
+  </form>
+</div>
+</body>
+</html>

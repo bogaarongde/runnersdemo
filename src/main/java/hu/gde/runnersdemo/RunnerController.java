@@ -1,64 +1,71 @@
 package hu.gde.runnersdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
-@RestController
+@Controller
 public class RunnerController {
 
     @Autowired
-    private LapTimeRepository lapTimeRepository;
     private RunnerRepository runnerRepository;
     @Autowired
-    public RunnerController(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository) {
-        this.runnerRepository = runnerRepository;
-        this.lapTimeRepository = lapTimeRepository;
+    private LapTimeRepository lapTimeRepository;
+    @GetMapping("/runners")
+    public String getAllRunners(Model model) {
+        List<RunnerEntity> runners = runnerRepository.findAll();
+        model.addAttribute("runners", runners);
+        return "runners";
     }
 
-    @GetMapping("/runner")
-    RunnerEntity getRunner(@RequestParam (value= "searchString", defaultValue = "") String searchString){
-        RunnerEntity runnerEntity = new RunnerEntity();
-
-        runnerEntity.setRunnerId(1);
-        runnerEntity.setRunnerName("Tomi");
-        runnerEntity.setAveragePace(310);
-
-
-        LapTimeEntity laptime1 = new LapTimeEntity();
-        laptime1.setLapNumber(1);
-        laptime1.setTimeSeconds(120);
-        laptime1.setRunner(runnerEntity);
-
-        LapTimeEntity laptime2 = new LapTimeEntity();
-        laptime2.setLapNumber(2);
-        laptime2.setTimeSeconds(110);
-        laptime2.setRunner(runnerEntity);
-        runnerEntity.getLaptimes().add(laptime1);
-        runnerEntity.getLaptimes().add(laptime2);
-
-        runnerRepository.save(runnerEntity);
-
-        return runnerEntity;
-    }
-    @GetMapping("/runner/{id}/averagelaptime")
-    public double getAverageLaptime(@PathVariable Long id) {
+    @GetMapping("/runner/{id}")
+    public String getRunnerById(@PathVariable Long id, Model model) {
         RunnerEntity runner = runnerRepository.findById(id).orElse(null);
+        RunnerService runnerService = new RunnerService(runnerRepository);
         if (runner != null) {
-            List<LapTimeEntity> laptimes = runner.getLaptimes();
-            int totalTime = 0;
-            for (LapTimeEntity laptime : laptimes) {
-                totalTime += laptime.getTimeSeconds();
-            }
-            double averageLaptime = (double) totalTime / laptimes.size();
-            return averageLaptime;
+            model.addAttribute("runner", runner);
+            double averageLaptime = runnerService.getAverageLaptime(runner.getRunnerId());
+            model.addAttribute("averageLaptime", averageLaptime);
+            return "runner";
         } else {
-            return -1.0;
+            // handle error when runner is not found
+            return "error";
         }
     }
 
+    @GetMapping("/runner/{id}/addlaptime")
+    public String showAddLaptimeForm(@PathVariable Long id, Model model) {
+        RunnerEntity runner = runnerRepository.findById(id).orElse(null);
+        if (runner != null) {
+            model.addAttribute("runner", runner);
+            LapTimeEntity laptime = new LapTimeEntity();
+            laptime.setLapNumber(runner.getLaptimes().size() + 1);
+            model.addAttribute("laptime", laptime);
+            return "addlaptime";
+        } else {
+            // handle error when runner is not found
+            return "error";
+        }
+    }
+    @PostMapping("/runner/{id}/addlaptime")
+    public String addLaptime(@PathVariable Long id, @ModelAttribute LapTimeEntity laptime) {
+        RunnerEntity runner = runnerRepository.findById(id).orElse(null);
+        if (runner != null) {
+            laptime.setRunner(runner);
+            laptime.setId(null);
+            runner.getLaptimes().add(laptime);
+            runnerRepository.save(runner);
+        } else {
+            // handle error when runner is not found
+        }
+        return "redirect:/runner/" + id;
+    }
 
 }
+
